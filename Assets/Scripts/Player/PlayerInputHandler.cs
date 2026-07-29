@@ -27,24 +27,22 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnLook(InputValue value)
     {
         LookInput = value.Get<Vector2>();
+        
     }
 
-    public void OnFire(InputAction.CallbackContext context)
+    public void OnFire(InputValue value)
     {
-        if (context.performed)
-            FirePerformed?.Invoke();
+        FirePerformed?.Invoke();
     }
 
-    public void OnReload(InputAction.CallbackContext context)
+    public void OnReload(InputValue value)
     {
-        if (context.performed)
-            ReloadPerformed?.Invoke();
+        ReloadPerformed?.Invoke();
     }
 
-    public void OnPause(InputAction.CallbackContext context)
+    public void OnPause(InputValue value)
     {
-        if (context.performed)
-            PausePerformed?.Invoke();
+       PausePerformed?.Invoke();
     }
 
 }

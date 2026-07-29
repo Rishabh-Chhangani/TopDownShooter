@@ -9,18 +9,18 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private PlayerInputHandler input;
+    private PlayerInputHandler moveInput;
     [SerializeField] private float moveSpeed = 10f;
 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        input = GetComponent<PlayerInputHandler>();
+        moveInput = GetComponent<PlayerInputHandler>();
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = input.MoveInput * moveSpeed;
+        rb.velocity = moveInput.MoveInput * moveSpeed;
     }
 }
