@@ -8,38 +8,46 @@ public class PlayerLook : MonoBehaviour
 {
     private PlayerInputHandler inputHandler;
     private Camera mainCamera;
-    private SpriteRenderer spriteRenderer;
-    [SerializeField] private Transform player;
+
+    [SerializeField] private Transform visuals;
+    public bool IsFacingRight { get; private set; }
 
     private void Awake()
     {
         inputHandler = GetComponent<PlayerInputHandler>();
         mainCamera = Camera.main;
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        MouseWorldPosition();
+        PlayerFlip();
 
 
     }
 
 
 
-  private void MouseWorldPosition()
+  private void PlayerFlip()
   {
         Vector2 mouseScreenPosition = inputHandler.LookInput;
         Vector2 mouseWorldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
     
-        if(mouseWorldPosition.x > player.transform.position.x )
+        if(mouseWorldPosition.x > transform.position.x )
         {
-            spriteRenderer.flipX = true;
+            Vector3 scale = visuals.localScale;
+            scale.x = 1;
+            visuals.localScale = scale;
+            IsFacingRight = true;
+            Debug.Log(IsFacingRight);
       
         }
-        else if(mouseWorldPosition.x < player.transform.position.x)
+        else if(mouseWorldPosition.x < transform.position.x)
         {
-            spriteRenderer.flipY = false;
+            Vector3 scale = visuals.localScale;
+            scale.x = -1;
+            visuals.localScale = scale;
+            IsFacingRight = false;
+            Debug.Log(IsFacingRight);
         }
         Debug.Log(mouseWorldPosition);
 

@@ -8,11 +8,13 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
-    private PlayerInputHandler playerInputHandler;
+    private PlayerInputHandler playerInputHandler; 
+    [SerializeField] private PlayerLook playerLook;
 
     private void Awake()
     {
         playerInputHandler = GetComponentInParent<PlayerInputHandler>();
+        playerLook = GetComponentInParent<PlayerLook>();
     }
 
 
@@ -27,6 +29,15 @@ public class Weapon : MonoBehaviour
 
     public void Fire()
     {
+        if(playerLook.IsFacingRight)
+        {
+
         GameObject obj = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        }
+        else
+        {
+        GameObject obj = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+
+        }
     }
 }
