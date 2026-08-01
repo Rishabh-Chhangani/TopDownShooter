@@ -27,22 +27,28 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnLook(InputValue value)
     {
         LookInput = value.Get<Vector2>();
+        Debug.Log($"Look Input: {LookInput}");
         
     }
 
     public void OnFire(InputValue value)
     {
-        FirePerformed?.Invoke();
+        if(value.isPressed)
+        {
+            FirePerformed?.Invoke();
+        }
     }
 
     public void OnReload(InputValue value)
     {
-        ReloadPerformed?.Invoke();
+        if(value.isPressed)
+            ReloadPerformed?.Invoke();
     }
 
     public void OnPause(InputValue value)
     {
-       PausePerformed?.Invoke();
+        if(value.isPressed)
+            PausePerformed?.Invoke();
     }
 
 }

@@ -8,28 +8,29 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private float bulletSpeed = 15f;
     [SerializeField] private float lifetime;
-    [SerializeField]private PlayerLook playerLook;
-    
+
+
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
     private void Start()
     {
-        playerLook = GetComponent<PlayerLook>();
-        rb = GetComponent<Rigidbody2D>();
-        BulletMovement();
-        DestroyBullet();
-    }
-    private void BulletMovement()
-    {
         
-
-        Vector2 direction = Vector2.right;
+        
+    }
+    public void Initialize(Vector2 direction)
+    {
+        Debug.Log(direction);
+        Debug.Log(rb);
         rb.velocity = direction * bulletSpeed;
+
+        Destroy(gameObject, lifetime);
    
     }
 
-    private void DestroyBullet()
-    {
-        Destroy(this.gameObject,lifetime);
-    }
+  
 
 
 }
