@@ -13,19 +13,19 @@ public class Weapon : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("Current Object: " + gameObject.name);
+        //Debug.Log("Current Object: " + gameObject.name);
 
         Transform current = transform;
 
         while (current != null)
         {
-            Debug.Log("Checking: " + current.name);
+            //Debug.Log("Checking: " + current.name);
 
             PlayerInputHandler input = current.GetComponent<PlayerInputHandler>();
             PlayerLook look = current.GetComponent<PlayerLook>();
 
-            Debug.Log("InputHandler: " + input);
-            Debug.Log("PlayerLook: " + look);
+            //Debug.Log("InputHandler: " + input);
+            //Debug.Log("PlayerLook: " + look);
 
             current = current.parent;
         }
@@ -33,8 +33,8 @@ public class Weapon : MonoBehaviour
         playerInputHandler = GetComponentInParent<PlayerInputHandler>();
         playerLook = GetComponentInParent<PlayerLook>();
 
-        Debug.Log("Final Input: " + playerInputHandler);
-        Debug.Log("Final Look: " + playerLook);
+        //Debug.Log("Final Input: " + playerInputHandler);
+        //Debug.Log("Final Look: " + playerLook);
     }
 
 

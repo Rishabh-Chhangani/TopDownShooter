@@ -27,7 +27,7 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnLook(InputValue value)
     {
         LookInput = value.Get<Vector2>();
-        Debug.Log($"Look Input: {LookInput}");
+       
         
     }
 
