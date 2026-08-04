@@ -1,40 +1,44 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    private PlayerInputHandler playerInputHandler;
+
+
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
-    private PlayerInputHandler playerInputHandler; 
-    [SerializeField] private PlayerLook playerLook;
+
+
+    private PlayerLook playerLook;
 
     private void Awake()
     {
-        //Debug.Log("Current Object: " + gameObject.name);
 
-        Transform current = transform;
-
-        while (current != null)
-        {
-            //Debug.Log("Checking: " + current.name);
-
-            PlayerInputHandler input = current.GetComponent<PlayerInputHandler>();
-            PlayerLook look = current.GetComponent<PlayerLook>();
-
-            //Debug.Log("InputHandler: " + input);
-            //Debug.Log("PlayerLook: " + look);
-
-            current = current.parent;
-        }
 
         playerInputHandler = GetComponentInParent<PlayerInputHandler>();
         playerLook = GetComponentInParent<PlayerLook>();
 
-        //Debug.Log("Final Input: " + playerInputHandler);
-        //Debug.Log("Final Look: " + playerLook);
+
+        if (playerInputHandler == null)
+        {
+            Debug.LogError("PlayerInputHandler not found.");
+            enabled = false;
+            return;
+        }
+
+        if (bulletPrefab == null)
+        {
+            Debug.LogError("Bullet Prefab is not assigned.");
+            enabled = false;
+            return;
+        }
+
+        if (firePoint == null)
+        {
+            Debug.LogError("Fire Point is not assigned.");
+            enabled = false;
+            return;
+        }
     }
 
 
@@ -47,17 +51,22 @@ public class Weapon : MonoBehaviour
     }
     private void OnDisable()
     {
-        if(playerInputHandler != null)
+        if (playerInputHandler != null)
         {
             playerInputHandler.FirePerformed -= Fire;
         }
     }
 
-    public void Fire()
+    private void Fire()
     {
         GameObject obj = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Vector2 direction = playerLook.IsFacingRight ? Vector2.right : Vector2.left;
-        obj.GetComponent<Bullet>().Initialize(direction);
+        //Vector2 direction = playerLook.IsFacingRight ? Vector2.right : Vector2.left;
+        //Bullet bullet = obj.GetComponent<Bullet>();
+
+        //if (bullet != null)
+        //{
+        //    bullet.Initialize(direction);
+        //}
 
     }
 }

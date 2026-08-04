@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,22 +19,17 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnMove(InputValue value)
     {
         MoveInput = value.Get<Vector2>();
-        Debug.Log(MoveInput);
     }
 
     public void OnLook(InputValue value)
     {
         LookInput = value.Get<Vector2>();
-       
-        
     }
 
     public void OnFire(InputValue value)
     {
         if(value.isPressed)
-        {
             FirePerformed?.Invoke();
-        }
     }
 
     public void OnReload(InputValue value)
