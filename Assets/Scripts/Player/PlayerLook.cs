@@ -60,7 +60,9 @@ public class PlayerLook: MonoBehaviour
 
         float desiredAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        Quaternion targetRotation = Quaternion.Euler(0f, 0f, desiredAngle + SpriteForwardOffSet);
+        float localAngle = desiredAngle - tankTurretParent.parent.eulerAngles.z ;
+
+        Quaternion targetRotation = Quaternion.Euler(0f, 0f, localAngle);
 
         float maxRotationThisFrame = turretRotationSpeed * Time.deltaTime;
 

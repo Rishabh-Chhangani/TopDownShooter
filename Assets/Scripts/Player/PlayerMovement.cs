@@ -10,9 +10,13 @@ public class PlayerMovement : MonoBehaviour
     
     private PlayerInputHandler inputHandler;
 
-    [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float rotationSpeed = 180f;
 
+    [SerializeField] private float maxSpeed = 10f;
+    public float acceleration = 70;
+    public float deceleration = 50;
+    public float currentSpeed = 0;
+    public float currentDriveDirection = 1;
 
 
     private void Awake()
@@ -33,9 +37,38 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void MoveTank()
+    {
+        rb.velocity = (Vector2)transform.up * currentSpeed * currentDriveDirection;
+    }
+    private void UpdateSpeed()
+    {
+        float verticalInput = inputHandler.MoveInput.y;
+
+        if (Mathf.Abs(verticalInput) > 0.01f)
+        {
+            currentSpeed += acceleration * Time.fixedDeltaTime;
+            currentSpeed = Mathf.Clamp(currentSpeed, 0f, maxSpeed);
+
+            currentDriveDirection = Mathf.Sign(verticalInput);
+        }
+        else
+        {
+            currentSpeed -= deceleration * Time.fixedDeltaTime;
+            currentSpeed = Mathf.Clamp(currentSpeed, 0f, maxSpeed);
+        }
+    }
+
+    public void RotateTank()
+    {
+        rb.MoveRotation(rb.rotation - inputHandler.MoveInput.x * rotationSpeed * Time.fixedDeltaTime);
+    }
+
     private void FixedUpdate()
     {
-        rb.velocity = (Vector2)transform.up * inputHandler.MoveInput.y * moveSpeed;
-        rb.MoveRotation(rb.rotation -inputHandler.MoveInput.x *rotationSpeed *Time.fixedDeltaTime);
+        UpdateSpeed();
+        MoveTank();
+        RotateTank();
+
     }
 }
