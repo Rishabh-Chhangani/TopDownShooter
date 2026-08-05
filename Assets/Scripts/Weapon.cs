@@ -1,22 +1,31 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
     private PlayerInputHandler playerInputHandler;
-
-
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform firePoint;
-
-
     private PlayerLook playerLook;
+
+    public List<Transform> turretBarrels;
+    [SerializeField] private GameObject bulletPrefab;
+    public float reloadDelay = 1;
+
+
+    private bool canShoot = true;
+    private Collider2D[] tankColliders;
+    private float currentDelay = 0;
+
+    
 
     private void Awake()
     {
 
-
+        tankColliders = GetComponentsInChildren<Collider2D>();
         playerInputHandler = GetComponentInParent<PlayerInputHandler>();
         playerLook = GetComponentInParent<PlayerLook>();
+
 
 
         if (playerInputHandler == null)
@@ -33,7 +42,7 @@ public class Weapon : MonoBehaviour
             return;
         }
 
-        if (firePoint == null)
+        if (barrel == null)
         {
             Debug.LogError("Fire Point is not assigned.");
             enabled = false;
@@ -59,14 +68,61 @@ public class Weapon : MonoBehaviour
 
     private void Fire()
     {
-        GameObject obj = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        //Vector2 direction = playerLook.IsFacingRight ? Vector2.right : Vector2.left;
-        //Bullet bullet = obj.GetComponent<Bullet>();
 
-        //if (bullet != null)
-        //{
-        //    bullet.Initialize(direction);
-        //}
+        Debug.Log("Fire Called");
+        if (canShoot)
+        {
+            Debug.Log("Can Shoot");
+            canShoot = false;
+            currentDelay = reloadDelay;
+
+            foreach (var barrel in turretBarrels)
+            {
+                Debug.Log("Spwaning");
+
+                GameObject bullet = Instantiate(bulletPrefab);
+
+                Debug.Log("Bullet : " +  bullet);
+
+                bullet.transform.position = barrel.position;
+                bullet.transform.rotation = barrel.rotation;
+
+                Debug.Log("Position = " + bullet.transform.position);
+
+                bullet.GetComponent<Bullet>().Initialize();
+
+                Debug.Log("Initialized");
+
+                foreach (var colllider in tankColliders)
+                {
+                    Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), colllider);
+                }
+            }
+
+
+        }
+
 
     }
+
+    public void Update()
+    {
+        Reload();
+    }
+
+    private void Reload()
+    {
+
+        if(canShoot == false)
+        {
+            currentDelay -= Time.deltaTime;
+            if(currentDelay <=- 0)
+            {
+                canShoot = true;
+            }
+        }
+    }
+
+
+
 }
