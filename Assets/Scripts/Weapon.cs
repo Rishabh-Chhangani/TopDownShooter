@@ -10,7 +10,7 @@ public class Weapon : MonoBehaviour
 
     public List<Transform> turretBarrels;
     [SerializeField] private GameObject bulletPrefab;
-    public float reloadDelay = 1;
+    public float reloadDelay = 0;
 
 
     private bool canShoot = true;
@@ -22,7 +22,7 @@ public class Weapon : MonoBehaviour
     private void Awake()
     {
 
-        tankColliders = GetComponentsInChildren<Collider2D>();
+        tankColliders = GetComponentsInParent<Collider2D>();
         playerInputHandler = GetComponentInParent<PlayerInputHandler>();
         playerLook = GetComponentInParent<PlayerLook>();
 
@@ -38,13 +38,6 @@ public class Weapon : MonoBehaviour
         if (bulletPrefab == null)
         {
             Debug.LogError("Bullet Prefab is not assigned.");
-            enabled = false;
-            return;
-        }
-
-        if (barrel == null)
-        {
-            Debug.LogError("Fire Point is not assigned.");
             enabled = false;
             return;
         }
