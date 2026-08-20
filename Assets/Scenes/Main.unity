@@ -2921,6 +2921,11 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
+--- !u!4 &644661838 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 512710338471155496, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+  m_PrefabInstance: {fileID: 512710338819466524}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &757093329
 GameObject:
   m_ObjectHideFlags: 0
@@ -3185,6 +3190,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!4 &1355535620 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 512710340115270771, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+  m_PrefabInstance: {fileID: 512710338819466524}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1416428001
 GameObject:
   m_ObjectHideFlags: 0
@@ -3194,9 +3204,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1416428003}
-  - component: {fileID: 1416428008}
   - component: {fileID: 1416428009}
-  m_Layer: 7
+  - component: {fileID: 1416428010}
+  m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3211,7 +3221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416428001}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3219,18 +3229,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1416428008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1416428001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f175f998fafbd1c4cb0c8ed7e76e4e80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1416428009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3261,6 +3259,18 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1416428010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416428001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f175f998fafbd1c4cb0c8ed7e76e4e80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1452385346
 GameObject:
   m_ObjectHideFlags: 0
@@ -7946,17 +7956,41 @@ PrefabInstance:
       propertyPath: reloadDelay
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 512710338471155496, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.495
+      objectReference: {fileID: 0}
     - target: {fileID: 512710339736016809, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
       propertyPath: maxSpeed
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 512710339736016809, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: inputHandler
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 512710339736016809, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
       propertyPath: movementData
       value: 
       objectReference: {fileID: 11400000, guid: 49a73efca65636043917b121534bf4ef, type: 2}
+    - target: {fileID: 512710339736016810, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 512710339736016810, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 512710339736016810, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 512710339736016814, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
       propertyPath: m_Name
       value: Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 512710339736016814, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 512710339736016815, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
       propertyPath: m_RootOrder
@@ -7964,11 +7998,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 512710339736016815, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.462
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 512710339736016815, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.494
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 512710339736016815, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8009,10 +8043,54 @@ PrefabInstance:
     - target: {fileID: 512710340115270766, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
       propertyPath: inputHandler
       value: 
-      objectReference: {fileID: 1416428008}
+      objectReference: {fileID: 0}
     - target: {fileID: 512710340115270766, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
       propertyPath: turretRotationSpeed
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 2011864168511552012, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1502403355}
+    - target: {fileID: 2011864168511552012, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: inputHandler
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011864168511552012, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: tankTurretParent
+      value: 
+      objectReference: {fileID: 1355535620}
+    - target: {fileID: 2011864168511552012, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: turretRotationSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4211617504724718062, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: movementData
+      value: 
+      objectReference: {fileID: 11400000, guid: 49a73efca65636043917b121534bf4ef, type: 2}
+    - target: {fileID: 4537979676510625267, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: turretData
+      value: 
+      objectReference: {fileID: 11400000, guid: 68297082e4f87d0459927a9def71921c, type: 2}
+    - target: {fileID: 4537979676510625267, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: turretBarrels.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537979676510625267, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: turretBarrels.Array.data[0]
+      value: 
+      objectReference: {fileID: 644661838}
+    - target: {fileID: 6483081299785653201, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1502403355}
+    - target: {fileID: 6483081299785653201, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: inputHandler
+      value: 
+      objectReference: {fileID: 1416428010}
+    - target: {fileID: 6483081299785653201, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: tankTurretParent
+      value: 
+      objectReference: {fileID: 1355535620}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5e335a2010c1be4d800e437f249279e, type: 3}

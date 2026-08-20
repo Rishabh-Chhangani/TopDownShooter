@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlayerTankMovementData
   m_EditorClassIdentifier: 
   rotationSpeed: 180
-  maxSpeed: 3
+  maxSpeed: 10
   acceleration: 70
   deceleration: 50

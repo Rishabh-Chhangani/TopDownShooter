@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 512710338239939166}
   - component: {fileID: 512710338239939167}
-  - component: {fileID: 512710338239939162}
-  - component: {fileID: 2594400189242703191}
+  - component: {fileID: 8596855017521044608}
+  - component: {fileID: 4537979676510625267}
   m_Layer: 7
   m_Name: Turret Weapon
   m_TagString: Untagged
@@ -87,24 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &512710338239939162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512710338239939165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1bf4ec31c873af4cad1295220119970, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turretBarrels:
-  - {fileID: 512710338471155496}
-  bulletPrefab: {fileID: 4805490697477657816, guid: 2f247457558ea9a41874d879c441e31c, type: 3}
-  reloadDelay: 1
-  bulletPoolCount: 10
---- !u!114 &2594400189242703191
+--- !u!114 &8596855017521044608
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,6 +102,21 @@ MonoBehaviour:
   objectToPool: {fileID: 0}
   poolSize: 10
   spawnedObjectsParent: {fileID: 0}
+--- !u!114 &4537979676510625267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512710338239939165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1bf4ec31c873af4cad1295220119970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretBarrels: []
+  turretData: {fileID: 0}
+  bulletPoolCount: 10
 --- !u!1 &512710338471155503
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,8 +160,7 @@ GameObject:
   - component: {fileID: 512710339736016808}
   - component: {fileID: 512710339736016810}
   - component: {fileID: 512710339736016811}
-  - component: {fileID: 512710339736016809}
-  - component: {fileID: 5957826765302110040}
+  - component: {fileID: 4211617504724718062}
   m_Layer: 7
   m_Name: Tank
   m_TagString: Untagged
@@ -179,7 +176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512710339736016814}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.462, y: 0.494, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -286,7 +283,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &512710339736016809
+--- !u!114 &4211617504724718062
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -298,26 +295,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe3f4aeb9bf94b4297f84deb8062bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 180
-  maxSpeed: 10
-  acceleration: 70
-  deceleration: 50
+  movementData: {fileID: 0}
   currentSpeed: 0
   currentDriveDirection: 1
---- !u!114 &5957826765302110040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512710339736016814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f9d70582f06d448b8fcf7adb6f4475, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 100
 --- !u!1 &512710340115270770
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 512710340115270771}
-  - component: {fileID: 512710340115270766}
+  - component: {fileID: 6483081299785653201}
   m_Layer: 7
   m_Name: TankTurret Parent
   m_TagString: Untagged
@@ -351,7 +331,7 @@ Transform:
   m_Father: {fileID: 512710339736016815}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &512710340115270766
+--- !u!114 &6483081299785653201
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -365,5 +345,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputHandler: {fileID: 0}
   mainCamera: {fileID: 0}
-  tankTurretParent: {fileID: 512710340115270771}
-  turretRotationSpeed: 500
+  tankTurretParent: {fileID: 0}
+  turretRotationSpeed: 800

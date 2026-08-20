@@ -13,7 +13,8 @@ public class Weapon : MonoBehaviour
 
     public List<Transform> turretBarrels;
     public TurretData turretData;
-    
+
+
     private bool canShoot = true;
     private Collider2D[] tankColliders;
     private float currentDelay = 0;
@@ -91,7 +92,7 @@ public class Weapon : MonoBehaviour
                 bullet.transform.position = barrel.position;
                 bullet.transform.rotation = barrel.rotation;
 
-                Debug.Log("Position = " + bullet.transform.position);
+                Debug.Log("Position = " +  transform.position);
 
                 bullet.GetComponent<Bullet>().Initialize();
 
@@ -120,7 +121,7 @@ public class Weapon : MonoBehaviour
         if(canShoot == false)
         {
             currentDelay -= Time.deltaTime;
-            if(currentDelay <=- 0)
+            if(currentDelay <= 0)
             {
                 canShoot = true;
             }
