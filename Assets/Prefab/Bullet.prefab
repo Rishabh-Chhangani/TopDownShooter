@@ -146,6 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d07edb7d257de284b9cefb798c02bbfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  damage: 5
-  maxDistance: 10
+  bulletData: {fileID: 11400000, guid: fbed88760a45d864890460e0506dd538, type: 2}

@@ -8,9 +8,7 @@ public class Bullet : MonoBehaviour
 {
     private Rigidbody2D rb2d;
 
-    public float speed = 10;
-    public int damage = 50;
-    public float maxDistance = 100;
+    public BulletData bulletData;
 
     private Vector2 startPosition;
     private float conquerDistance = 0;
@@ -24,22 +22,23 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         conquerDistance = Vector2.Distance(transform.position, startPosition);
-        if(conquerDistance >= maxDistance)
+        if(conquerDistance >= bulletData.maxDistance)
         {
-            DestroyBullet();
+            DisableBullet();
         }
     }
 
-    private void DestroyBullet()
+    private void DisableBullet()
     {
         rb2d.velocity = Vector2.zero;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+
     }
 
     public void Initialize()
     {
         startPosition = transform.position;
-        rb2d.velocity = transform.up * speed;
+        rb2d.velocity = transform.up * bulletData.speed;
         Debug.Log("Velocity: " + rb2d.velocity);
     }
 
@@ -50,9 +49,9 @@ public class Bullet : MonoBehaviour
 
         if (damagable != null)
         {
-            damagable.TakeDamage(damage);
+            damagable.TakeDamage(bulletData.damage);
             Debug.Log("Damage Object : "+ damagable.name);
         }
-        DestroyBullet();
+        DisableBullet();
     }
 }

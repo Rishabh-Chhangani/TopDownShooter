@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Damagable : MonoBehaviour
 {
-    private int currentHealth;
+    [SerializeField] private int currentHealth;
     public int maxHealth = 100;
 
     
@@ -55,9 +55,5 @@ public class Damagable : MonoBehaviour
         OnDeath?.Invoke();
         Destroy(gameObject);
 
-    }
-
-
-
-   
+    }   
 }

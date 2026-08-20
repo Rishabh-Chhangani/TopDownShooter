@@ -3,19 +3,25 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
+
+
+[RequireComponent(typeof(ObjectPool))]
 public class Weapon : MonoBehaviour
 {
     private PlayerInputHandler playerInputHandler;
     private PlayerLook playerLook;
 
     public List<Transform> turretBarrels;
-    [SerializeField] private GameObject bulletPrefab;
-    public float reloadDelay = 0;
-
-
+    public TurretData turretData;
+    
     private bool canShoot = true;
     private Collider2D[] tankColliders;
     private float currentDelay = 0;
+
+    private ObjectPool bulletPool;
+    [SerializeField]
+    private int bulletPoolCount = 10;
+
 
     
 
@@ -25,7 +31,7 @@ public class Weapon : MonoBehaviour
         tankColliders = GetComponentsInParent<Collider2D>();
         playerInputHandler = GetComponentInParent<PlayerInputHandler>();
         playerLook = GetComponentInParent<PlayerLook>();
-
+        bulletPool = GetComponent<ObjectPool>();
 
 
         if (playerInputHandler == null)
@@ -35,12 +41,17 @@ public class Weapon : MonoBehaviour
             return;
         }
 
-        if (bulletPrefab == null)
+        if (turretData.bulletPrefab == null)
         {
             Debug.LogError("Bullet Prefab is not assigned.");
             enabled = false;
             return;
         }
+    }
+
+    private void Start()
+    {
+        bulletPool.Initialize(turretData.bulletPrefab, bulletPoolCount);
     }
 
 
@@ -67,13 +78,13 @@ public class Weapon : MonoBehaviour
         {
             Debug.Log("Can Shoot");
             canShoot = false;
-            currentDelay = reloadDelay;
+            currentDelay = turretData.reloadDelay;
 
             foreach (var barrel in turretBarrels)
             {
                 Debug.Log("Spwaning");
 
-                GameObject bullet = Instantiate(bulletPrefab);
+                GameObject bullet = bulletPool.CreateObject();
 
                 Debug.Log("Bullet : " +  bullet);
 
