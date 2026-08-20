@@ -1,3 +1,5 @@
-﻿internal class AIBehaviour
+﻿using UnityEngine;
+public abstract class AIBehaviour : MonoBehaviour 
 {
+    public abstract PerformAction()
 }

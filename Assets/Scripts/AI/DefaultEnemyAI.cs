@@ -5,4 +5,7 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
     private AIBehaviour shootBehaviour, patrolBehaviour;
+
+    [SerializeField]
+    private Weapon tankWeapon;
 }
