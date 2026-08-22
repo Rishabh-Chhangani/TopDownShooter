@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretBarrels: []
-  turretData: {fileID: 0}
+  turretData: {fileID: 11400000, guid: 68297082e4f87d0459927a9def71921c, type: 2}
   bulletPoolCount: 10
 --- !u!1 &512710338471155503
 GameObject:
@@ -160,8 +160,10 @@ GameObject:
   - component: {fileID: 512710339736016808}
   - component: {fileID: 512710339736016810}
   - component: {fileID: 512710339736016811}
-  - component: {fileID: 4211617504724718062}
-  m_Layer: 7
+  - component: {fileID: 2799671825359136552}
+  - component: {fileID: 3170098538554898953}
+  - component: {fileID: 8678535190004980579}
+  m_Layer: 11
   m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +285,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &4211617504724718062
+--- !u!114 &2799671825359136552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512710339736016814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9467cbc208fd06841bbddc903b6dd6e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tankMovement: {fileID: 0}
+  aimTurret: {fileID: 0}
+  weapon:
+  - {fileID: 4537979676510625267}
+--- !u!114 &3170098538554898953
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -295,9 +313,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe3f4aeb9bf94b4297f84deb8062bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementData: {fileID: 0}
+  movementData: {fileID: 11400000, guid: 391d2da619093ec44bf2bd9e14f4302f, type: 2}
   currentSpeed: 0
   currentDriveDirection: 1
+--- !u!114 &8678535190004980579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512710339736016814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f9d70582f06d448b8fcf7adb6f4475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 100
 --- !u!1 &512710340115270770
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +375,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc688bf0e4b8a3842b1771d9d9006af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputHandler: {fileID: 0}
-  mainCamera: {fileID: 0}
-  tankTurretParent: {fileID: 0}
+  tankTurretParent: {fileID: 512710340115270771}
   turretRotationSpeed: 800

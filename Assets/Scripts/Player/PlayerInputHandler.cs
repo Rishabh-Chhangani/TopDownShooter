@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
+    
 
     public Vector2 MoveInput { get; private set; }
     public Vector2 LookInput { get; private set; }
@@ -16,6 +17,8 @@ public class PlayerInputHandler : MonoBehaviour
 
 
 
+ 
+
     public void OnMove(InputValue value)
     {
         MoveInput = value.Get<Vector2>();
@@ -23,6 +26,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnLook(InputValue value)
     {
+        
         LookInput = value.Get<Vector2>();
     }
 
@@ -43,5 +47,7 @@ public class PlayerInputHandler : MonoBehaviour
         if(value.isPressed)
             PausePerformed?.Invoke();
     }
+
+   
 
 }

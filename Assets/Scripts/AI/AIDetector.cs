@@ -21,10 +21,10 @@ public class AIDetector : MonoBehaviour
     private LayerMask visibilityLayer;
 
     [field: SerializeField]
-    private bool TargetVisible { get; set; }
+    public bool TargetVisible { get;  private set; }
 
 
-    private Transform Target
+    public Transform Target
     {
         get => target;
         set

@@ -1,15 +1,16 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 
 
 [RequireComponent(typeof(ObjectPool))]
-public class Weapon : MonoBehaviour
+public class WeaponTurret : MonoBehaviour
 {
-    private PlayerInputHandler playerInputHandler;
-    private PlayerLook playerLook;
+    
+    private TankController tankController;
+
+
+    private AimTurret aimTurret;
 
     public List<Transform> turretBarrels;
     public TurretData turretData;
@@ -30,14 +31,16 @@ public class Weapon : MonoBehaviour
     {
 
         tankColliders = GetComponentsInParent<Collider2D>();
-        playerInputHandler = GetComponentInParent<PlayerInputHandler>();
-        playerLook = GetComponentInParent<PlayerLook>();
+        
+        aimTurret = GetComponentInParent<AimTurret>();
         bulletPool = GetComponent<ObjectPool>();
 
 
-        if (playerInputHandler == null)
+        tankController = GetComponentInParent<TankController>();
+
+        if(tankController == null)
         {
-            Debug.LogError("PlayerInputHandler not found.");
+            Debug.LogError("TankController is not found in parent.");
             enabled = false;
             return;
         }
@@ -56,22 +59,9 @@ public class Weapon : MonoBehaviour
     }
 
 
-    private void OnEnable()
-    {
-        if (playerInputHandler != null)
-        {
-            playerInputHandler.FirePerformed += Fire;
-        }
-    }
-    private void OnDisable()
-    {
-        if (playerInputHandler != null)
-        {
-            playerInputHandler.FirePerformed -= Fire;
-        }
-    }
+  
 
-    private void Fire()
+    public void Fire()
     {
 
         Debug.Log("Fire Called");

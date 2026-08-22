@@ -4,14 +4,14 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 
-public class PlayerMovement : MonoBehaviour
+public class TankMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
 
    
-    private PlayerInputHandler inputHandler;
+   
 
-
+    private Vector2 movementVector;
     public TankMovementData movementData;
 
 
@@ -22,28 +22,25 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        inputHandler = GetComponentInParent<PlayerInputHandler>();
+      
+
         if (rb == null)
         {
             Debug.LogError("Rigidbody2D not found.");
             enabled = false;
             return;
         }
-        if (inputHandler == null)
-        {
-            Debug.LogError("PlayerInputHandler not found.");
-            enabled = false;
-            return;
-        }
+
     }
 
-    public void MoveTank()
+    public void MoveTank(Vector2 movementVector)
     {
-        rb.velocity = (Vector2)transform.up * currentSpeed * currentDriveDirection;
+        this.movementVector = movementVector;
+     
     }
-    private void UpdateSpeed()
+    private void UpdateSpeed(Vector2 movementInput)
     {
-        float verticalInput = inputHandler.MoveInput.y;
+        float verticalInput = movementInput.y;
 
         if (Mathf.Abs(verticalInput) > 0.01f)
         {
@@ -59,16 +56,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void RotateTank()
+    private void RotateTank(Vector2 movementInput)
     {
-        rb.MoveRotation(rb.rotation - inputHandler.MoveInput.x * movementData.rotationSpeed * Time.fixedDeltaTime);
+        rb.MoveRotation(rb.rotation - movementInput.x * movementData.rotationSpeed * Time.fixedDeltaTime);
     }
 
     private void FixedUpdate()
     {
-        UpdateSpeed();
-        MoveTank();
-        RotateTank();
+       
+      
+        UpdateSpeed(movementVector);
+        RotateTank(movementVector);
+        rb.velocity = (Vector2)transform.up * currentSpeed * currentDriveDirection;
 
     }
 }

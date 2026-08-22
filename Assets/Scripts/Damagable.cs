@@ -7,7 +7,7 @@ public class Damagable : MonoBehaviour
 {
     [SerializeField] private int currentHealth;
     public int maxHealth = 100;
-
+    private Transform rootEntity;
     
 
     public event Action OnDeath;
@@ -18,6 +18,7 @@ public class Damagable : MonoBehaviour
     private void Awake()
     {
         currentHealth = maxHealth;
+        rootEntity = transform.root;
     }
 
 
@@ -53,7 +54,7 @@ public class Damagable : MonoBehaviour
     public void Die()
     {
         OnDeath?.Invoke();
-        Destroy(gameObject);
+        Destroy(rootEntity.gameObject);
 
     }   
 }

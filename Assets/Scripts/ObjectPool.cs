@@ -24,11 +24,17 @@ public class ObjectPool : MonoBehaviour
     {
         this.objectToPool = objectToPool;
         this.poolSize = poolSize;
+        if (objectPool == null)
+            objectPool = new Queue<GameObject>();
     }
 
 
     public GameObject CreateObject()
     {
+        // Ensure internal queue is initialized in case Awake wasn't run or Initialize wasn't called.
+        if (objectPool == null)
+            objectPool = new Queue<GameObject>();
+
         CreateOnjectParentIfNeeded();
 
         GameObject spawnedObject = null;
@@ -57,9 +63,10 @@ public class ObjectPool : MonoBehaviour
 
     private void CreateOnjectParentIfNeeded()
     {
-        if (spawnedObjectsParent != null)
+        // Create a parent container for pooled objects if none assigned yet
+        if (spawnedObjectsParent == null)
         {
-            string name = "ObjectPool" + objectToPool.name;
+            string name = "ObjectPool" + (objectToPool != null ? objectToPool.name : "");
             var parentObject = GameObject.Find(name);
             if (parentObject != null)
             {
@@ -69,12 +76,14 @@ public class ObjectPool : MonoBehaviour
             {
                 spawnedObjectsParent = new GameObject(name).transform;
             }
-
         }
     }
 
     private void OnDestroy()
     {
+        if (objectPool == null)
+            return;
+
         foreach(var item in objectPool)
         {
             if(item == null)
