@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using UnityEditor.Experimental.GraphView;
+using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -13,6 +10,7 @@ public class Bullet : MonoBehaviour
     private Vector2 startPosition;
     private float conquerDistance = 0;
 
+    public event Action OnHit;
 
     private void Awake()
     {
@@ -46,7 +44,7 @@ public class Bullet : MonoBehaviour
     {
         Debug.Log("Collied" + collision.name);
         Damagable damagable = collision.gameObject.GetComponent<Damagable>();
-
+        OnHit?.Invoke();
         if (damagable != null)
         {
             damagable.TakeDamage(bulletData.damage);
