@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5759605564385579066}
   - component: {fileID: 3170094420634974452}
+  - component: {fileID: 4372238309736734847}
+  - component: {fileID: 344253446563295059}
   m_Layer: 6
   m_Name: Impact Feedback
   m_TagString: Untagged
@@ -46,6 +48,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPrefab: {fileID: 6570482696049056718, guid: e90a3e981079da54a89fd32e08d605ae, type: 3}
   radius: 0.2
+  bullet: {fileID: 2698140192182655823}
+--- !u!114 &4372238309736734847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798429802921078886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e47a9a07055a54eaa636c6873bbfd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 2698140192182655823}
+  instantiateUtil: {fileID: 344253446563295059}
+--- !u!114 &344253446563295059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798429802921078886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66a01368ff7b64a40b9cc46feb124a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToInstantiate: {fileID: 761096563046381887, guid: a832cc918cc2ea640b9314c2df71350b, type: 3}
 --- !u!1 &4805490697477657816
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class Damagable : MonoBehaviour
 
     public event Action OnDeath;
     public event Action OnDamaged;
-    public event Action<float> OnHeatlhChanged;
+    public event Action<float> OnHealthChanged;
 
 
     private void Awake()
@@ -32,7 +32,7 @@ public class Damagable : MonoBehaviour
         {
             currentHealth = value;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-            OnHeatlhChanged?.Invoke((float)currentHealth / maxHealth);
+            OnHealthChanged?.Invoke((float)currentHealth / maxHealth);
         }
     }
 
@@ -47,12 +47,17 @@ public class Damagable : MonoBehaviour
         else
         {
             OnDamaged?.Invoke();
+          
+
             Debug.Log(currentHealth);
+
         }
     }
 
     public void Die()
     {
+        Debug.Log("Damagable.Die() CALLED");
+
         OnDeath?.Invoke();
         Destroy(rootEntity.gameObject);
 

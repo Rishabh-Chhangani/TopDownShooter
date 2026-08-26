@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372a18a708d513846a31f0233a69a334, type: 3}
   m_Name: HeavyBuletData
   m_EditorClassIdentifier: 
-  speed: 5
-  damage: 50
+  speed: 10
+  damage: 15
   maxDistance: 65

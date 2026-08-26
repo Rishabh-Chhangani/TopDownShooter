@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,9 @@ public class WeaponTurret : MonoBehaviour
     [SerializeField]
     private int bulletPoolCount = 10;
 
+
+    public event Action OnShoot, OnCanShoot;
+    public event Action<float> OnReloading;
 
     
 
@@ -56,6 +60,7 @@ public class WeaponTurret : MonoBehaviour
     private void Start()
     {
         bulletPool.Initialize(turretData.bulletPrefab, bulletPoolCount);
+        OnReloading?.Invoke(currentDelay);
     }
 
 
@@ -64,39 +69,39 @@ public class WeaponTurret : MonoBehaviour
     public void Fire()
     {
 
-        Debug.Log("Fire Called");
+        
         if (canShoot)
         {
-            Debug.Log("Can Shoot");
+           
             canShoot = false;
             currentDelay = turretData.reloadDelay;
 
             foreach (var barrel in turretBarrels)
             {
-                Debug.Log("Spwaning");
+                Debug.Log("BARREL COUNT: " + turretBarrels.Count);
 
                 GameObject bullet = bulletPool.CreateObject();
 
-                Debug.Log("Bullet : " +  bullet);
+                Debug.Log("FIRING BARREL: " + barrel.name);
 
                 bullet.transform.position = barrel.position;
-                bullet.transform.rotation = barrel.rotation;
-
-                Debug.Log("Position = " +  transform.position);
+                bullet.transform.rotation = barrel.rotation;                
 
                 bullet.GetComponent<Bullet>().Initialize();
-
-                Debug.Log("Initialized");
 
                 foreach (var colllider in tankColliders)
                 {
                     Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), colllider);
                 }
             }
-
-
+            
+            OnShoot?.Invoke();
+            OnReloading?.Invoke(currentDelay);
         }
-
+        else
+        {
+            OnCanShoot?.Invoke();
+        }
 
     }
 
@@ -111,6 +116,7 @@ public class WeaponTurret : MonoBehaviour
         if(canShoot == false)
         {
             currentDelay -= Time.deltaTime;
+            OnReloading?.Invoke(currentDelay);
             if(currentDelay <= 0)
             {
                 canShoot = true;

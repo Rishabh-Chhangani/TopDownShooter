@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372a18a708d513846a31f0233a69a334, type: 3}
   m_Name: LightBuletData
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 20
   damage: 5
   maxDistance: 130

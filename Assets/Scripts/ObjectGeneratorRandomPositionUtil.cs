@@ -12,6 +12,8 @@ public class ObjectGeneratorRandomPositionUtil : MonoBehaviour
     [SerializeField]
     private Bullet bullet;
 
+    
+
     private void OnEnable()
     {
         bullet.OnHit += CreateObject;
