@@ -15,6 +15,8 @@ public class ObjectPool : MonoBehaviour
 
     public Transform spawnedObjectsParent;
 
+    public bool alwaysDestroy = false;
+
     private void Awake()
     {
         objectPool = new Queue<GameObject> ();
@@ -90,7 +92,7 @@ public class ObjectPool : MonoBehaviour
             {
                 continue;
             }
-            else if(item.activeSelf == false)
+            else if(item.activeSelf == false || alwaysDestroy)
             {
                 Destroy(item); 
             }

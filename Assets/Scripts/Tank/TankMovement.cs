@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 
 
@@ -18,6 +19,9 @@ public class TankMovement : MonoBehaviour
     public float currentSpeed = 0;
     public float currentDriveDirection = 1;
 
+    public event Action<float> OnSpeedChange ;
+
+
 
     private void Awake()
     {
@@ -36,6 +40,7 @@ public class TankMovement : MonoBehaviour
     public void MoveTank(Vector2 movementVector)
     {
         this.movementVector = movementVector;
+
      
     }
     private void UpdateSpeed(Vector2 movementInput)
@@ -54,6 +59,8 @@ public class TankMovement : MonoBehaviour
             currentSpeed -= movementData.deceleration * Time.fixedDeltaTime;
             currentSpeed = Mathf.Clamp(currentSpeed, 0f, movementData.maxSpeed);
         }
+
+        OnSpeedChange?.Invoke(currentSpeed);
     }
 
     private void RotateTank(Vector2 movementInput)

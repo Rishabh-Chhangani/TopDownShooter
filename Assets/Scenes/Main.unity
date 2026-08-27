@@ -2683,6 +2683,11 @@ MonoBehaviour:
   pointsColor: {r: 0, g: 0, b: 1, a: 0.105882354}
   pointSize: 0.3
   lineColor: {r: 1, g: 0, b: 1, a: 1}
+--- !u!82 &172808710 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4134577877042772707, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+  m_PrefabInstance: {fileID: 512710338819466524}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &446489516
 GameObject:
   m_ObjectHideFlags: 0
@@ -11929,8 +11934,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1502403356}
   - component: {fileID: 1502403355}
-  - component: {fileID: 1502403354}
   - component: {fileID: 1502403357}
+  - component: {fileID: 1502403358}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -11938,14 +11943,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1502403354
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1502403353}
-  m_Enabled: 1
 --- !u!20 &1502403355
 Camera:
   m_ObjectHideFlags: 0
@@ -11970,10 +11967,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 10000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -12011,19 +12008,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502403353}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_AssetsPPU: 15
-  m_RefResolutionX: 400
-  m_RefResolutionY: 400
+  m_RefResolutionX: 630
+  m_RefResolutionY: 300
   m_UpscaleRT: 1
   m_PixelSnapping: 0
   m_CropFrameX: 1
   m_CropFrameY: 1
   m_StretchFill: 1
+--- !u!81 &1502403358
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502403353}
+  m_Enabled: 1
 --- !u!4 &1520677555 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 512710339736016815, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
@@ -12453,6 +12458,18 @@ PrefabInstance:
       propertyPath: turretRotationSpeed
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 3370726263252039963, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 172808710}
+    - target: {fileID: 4134577877042772707, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4134577877042772707, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4211617504724718062, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
       propertyPath: movementData
       value: 
@@ -12487,6 +12504,19 @@ PrefabInstance:
       objectReference: {fileID: 1355535620}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+--- !u!1 &512710338819466525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 512710339736016814, guid: f5e335a2010c1be4d800e437f249279e, type: 3}
+  m_PrefabInstance: {fileID: 512710338819466524}
+  m_PrefabAsset: {fileID: 0}
+--- !u!81 &512710338819466526
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512710338819466525}
+  m_Enabled: 1
 --- !u!1001 &3191135474247544357
 PrefabInstance:
   m_ObjectHideFlags: 0
