@@ -12,26 +12,42 @@ public class HealthBarUIListner : MonoBehaviour
 
     private void OnEnable()
     {
-        
+
         if (damagable != null)
         {
             damagable.OnHealthChanged += UpdateHealthBar;
-            UpdateHealthBar((float)damagable.CurrentHealth / damagable.maxHealth);
+
+
         }
     }
-    
+    private void Start()
+    {
+        if (damagable != null)
+        {
+            UpdateHealthBar(
+                (float)damagable.CurrentHealth / damagable.maxHealth
+            );
 
-    private void OnDisable()
+        }
+    }
+
+
+private void OnDisable()
     {
         if (damagable != null)
         {
             damagable.OnHealthChanged -= UpdateHealthBar;
+
         }
     }   
 
 
     private void UpdateHealthBar(float healthPercentage)
     {
+        Debug.Log($"UPDATE HEALTH BAR CALLED: {healthPercentage}");
+
         healthBar.value = healthPercentage;
+
+        Debug.Log($"SLIDER VALUE NOW: {healthBar.value}");
     }
 }

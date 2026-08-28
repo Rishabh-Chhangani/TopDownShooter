@@ -92,7 +92,7 @@ public class ObjectPool : MonoBehaviour
             {
                 continue;
             }
-            else if(item.activeSelf == false || alwaysDestroy)
+            else if(item.activeSelf == false || alwaysDestroy )
             {
                 Destroy(item); 
             }

@@ -19,6 +19,8 @@ public class Damagable : MonoBehaviour
     {
         currentHealth = maxHealth;
         rootEntity = transform.root;
+
+        Debug.Log($"Damagable Awake: {currentHealth}/{maxHealth}");
     }
 
 
