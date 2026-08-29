@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Damagable : MonoBehaviour
 {
-    [SerializeField] private int currentHealth;
+    [SerializeField] private int currentHealth = 0;
     public int maxHealth = 100;
     private Transform rootEntity;
     
@@ -17,10 +17,12 @@ public class Damagable : MonoBehaviour
 
     private void Awake()
     {
-        currentHealth = maxHealth;
+        if(currentHealth == 0)
+            currentHealth = maxHealth;
+
         rootEntity = transform.root;
 
-        Debug.Log($"Damagable Awake: {currentHealth}/{maxHealth}");
+      
     }
 
 
